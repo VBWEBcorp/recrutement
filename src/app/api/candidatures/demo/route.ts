@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import clientPromise from "@/lib/mongodb";
+import { getMongoClient } from "@/lib/mongodb";
+
+export const dynamic = "force-dynamic";
 
 const DEMO_DATA = [
   {
@@ -82,7 +84,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
   }
 
-  const client = await clientPromise;
+  const client = await getMongoClient();
   const db = client.db("Recrutement");
 
   const docs = DEMO_DATA.map((d, i) => ({
@@ -100,7 +102,7 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
   }
 
-  const client = await clientPromise;
+  const client = await getMongoClient();
   const db = client.db("Recrutement");
   const result = await db.collection("candidatures").deleteMany({ __demo: true });
   return NextResponse.json({ success: true, deleted: result.deletedCount });

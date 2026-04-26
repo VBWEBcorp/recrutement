@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import clientPromise from "@/lib/mongodb";
+import { getMongoClient } from "@/lib/mongodb";
+
+export const dynamic = "force-dynamic";
 import { ObjectId } from "mongodb";
 
 export async function GET(
@@ -13,7 +15,7 @@ export async function GET(
       return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
     }
 
-    const client = await clientPromise;
+    const client = await getMongoClient();
     const db = client.db("Recrutement");
 
     const candidature = await db
@@ -53,7 +55,7 @@ export async function PATCH(
     if (typeof body.prix === "string") allowed.prix = body.prix;
     if (typeof body.status === "string") allowed.status = body.status;
 
-    const client = await clientPromise;
+    const client = await getMongoClient();
     const db = client.db("Recrutement");
 
     await db
@@ -77,7 +79,7 @@ export async function DELETE(
       return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
     }
 
-    const client = await clientPromise;
+    const client = await getMongoClient();
     const db = client.db("Recrutement");
 
     await db.collection("candidatures").deleteOne({ _id: new ObjectId(id) });
