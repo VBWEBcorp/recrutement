@@ -24,7 +24,7 @@ const CATEGORIES = [
     id: "setter",
     label: "Setter",
     description:
-      "Bon ciblage requis et humain dans les conversations — pas de scripts robots.",
+      "Bon ciblage requis et humain dans les conversations, pas de scripts robots.",
   },
 ];
 
@@ -169,8 +169,15 @@ export default function Home() {
             </div>
           </div>
 
-          <h1 className="text-[28px] sm:text-5xl lg:text-6xl font-semibold text-white tracking-tight leading-[1.1]">
-            Rejoignez VBWEB.
+          <h1 className="text-[28px] sm:text-5xl lg:text-6xl font-semibold text-white tracking-tight leading-[1.1] flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span>Rejoignez</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://i.ibb.co/C3ZJ3z59/VBWEB-LOGO-BLEU-BLANC.png"
+              alt="VBWEB"
+              className="inline-block h-7 sm:h-12 lg:h-14 w-auto translate-y-1"
+            />
+            <span>.</span>
           </h1>
           <p className="mt-3 sm:mt-5 text-sm sm:text-lg text-blue-100/70 leading-relaxed max-w-xl">
             Agence web en pleine croissance. On travaille au projet, avec des profils rigoureux et passionnés.
@@ -190,10 +197,12 @@ export default function Home() {
               À propos de VBWEB
             </div>
             <p className="text-sm sm:text-[15px] text-gray-700 leading-relaxed">
-              VBWEB est une agence web en pleine croissance. On est déjà une équipe
-              de <span className="font-semibold text-[#0A2540]">2 développeurs</span>, avec
-              des clients fidèles en France. Ambiance jeune, dynamique — on
-              travaille au projet avec des profils rigoureux et passionnés.
+              VBWEB est une jeune agence web dynamique, déjà spécialisée dans le
+              développement. Nous sommes aujourd&apos;hui une équipe de{" "}
+              <span className="font-semibold text-[#0A2540]">2 développeurs en interne</span>{" "}
+              et nous cherchons à nous entourer de profils complémentaires pour
+              grandir ensemble. On privilégie les collaborations long terme, dans
+              un cadre équilibré pour tout le monde.
             </p>
           </div>
 
@@ -282,7 +291,7 @@ export default function Home() {
                   onChange={(e) => setForm({ ...form, experience: e.target.value })}
                   className="input"
                 >
-                  <option value="">— Choisir —</option>
+                  <option value="">Choisir</option>
                   {EXPERIENCES.map((exp) => (
                     <option key={exp.id} value={exp.id}>
                       {exp.label}

@@ -8,7 +8,7 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "VBWEB — Recrutement",
+  title: "VBWEB · Recrutement",
   description: "Postulez pour rejoindre l'agence web VBWEB",
 };
 

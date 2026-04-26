@@ -170,7 +170,7 @@ export default function AdminPage() {
     return (
       <div className="flex flex-1 items-center justify-center p-4 sm:p-8 bg-[#0A2540] min-h-screen">
         <form onSubmit={handleLogin} className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 w-full max-w-sm space-y-4">
-          <h1 className="text-xl font-semibold text-[#0A2540] text-center">Admin — Recrutement</h1>
+          <h1 className="text-xl font-semibold text-[#0A2540] text-center">Admin · Recrutement</h1>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">Mot de passe</label>
             <input
@@ -318,10 +318,10 @@ export default function AdminPage() {
                         {c.statut ? (
                           <>
                             <div className="font-medium text-[#0A2540]">{c.statut}</div>
-                            <div className="text-gray-400">{EXP_LABEL[c.experience || ""] || "—"}</div>
+                            <div className="text-gray-400">{EXP_LABEL[c.experience || ""] || ""}</div>
                           </>
                         ) : (
-                          <span className="text-gray-300">—</span>
+                          <span className="text-gray-300">·</span>
                         )}
                       </div>
                       <div className="min-w-0 text-gray-600 text-xs">
@@ -339,7 +339,7 @@ export default function AdminPage() {
                         ))}
                       </div>
                       <div className="text-xs text-gray-700 font-medium truncate">
-                        {c.prix || c.tarifHoraire || <span className="text-gray-300">—</span>}
+                        {c.prix || c.tarifHoraire || <span className="text-gray-300">·</span>}
                       </div>
                       <div className="text-[11px] text-gray-400">
                         {new Date(c.createdAt).toLocaleDateString("fr-FR", { day: "2-digit", month: "short" })}
@@ -550,13 +550,13 @@ function Drawer({
               <div>
                 <Label>Type de profil</Label>
                 <div className="text-sm text-[#0A2540] font-semibold">
-                  {candidat.statut || "—"}
+                  {candidat.statut || ""}
                 </div>
               </div>
               <div>
                 <Label>Expérience</Label>
                 <div className="text-sm text-[#0A2540] font-semibold">
-                  {EXP_LABEL[candidat.experience || ""] || "—"}
+                  {EXP_LABEL[candidat.experience || ""] || ""}
                 </div>
               </div>
             </div>
