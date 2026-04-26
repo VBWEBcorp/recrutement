@@ -7,24 +7,25 @@ const CATEGORIES = [
     id: "developpeur",
     label: "Développeur Web",
     description:
-      "Quelqu'un qui sait coder et qui peut aider sur plein de démarches à côté (DNS, optimisation, etc.). Un vrai bras droit technique.",
+      "Profil polyvalent à l'aise sur le développement comme sur la gestion technique au quotidien : DNS, déploiements, optimisations. Un véritable bras droit technique.",
   },
   {
     id: "seo",
     label: "Expert SEO",
     description:
-      "Bon en SEO, qui mène des actions concrètes chaque mois et reste en contact direct avec le client via l'app.",
+      "Référenceur capable de piloter une stratégie sur la durée, de mener des actions mensuelles concrètes et d'échanger directement avec le client via notre application.",
   },
   {
     id: "ads",
     label: "Meta Ads & Google Ads",
-    description: "Calé en publicité Meta (Facebook / Instagram) et Google Ads.",
+    description:
+      "Spécialiste de la publicité en ligne, à l'aise pour structurer, lancer et optimiser des campagnes sur Meta (Facebook, Instagram) et Google Ads.",
   },
   {
     id: "setter",
     label: "Setter",
     description:
-      "Bon ciblage requis et humain dans les conversations, pas de scripts robots.",
+      "Profil de qualification commerciale capable de mener des échanges naturels et adaptés à chaque interlocuteur. La justesse du ciblage et la qualité du contact priment sur les scripts.",
   },
 ];
 
@@ -85,15 +86,15 @@ export default function Home() {
     setError("");
 
     if (!form.statut) {
-      setError("Indiquez si vous êtes freelance ou une agence.");
+      setError("Veuillez préciser votre statut (freelance ou agence).");
       return;
     }
     if (!form.experience) {
-      setError("Indiquez votre expérience dans le domaine.");
+      setError("Veuillez sélectionner votre niveau d'expérience.");
       return;
     }
     if (!form.categories.length) {
-      setError("Sélectionnez au moins un poste.");
+      setError("Veuillez sélectionner au moins un poste.");
       return;
     }
 
@@ -115,7 +116,7 @@ export default function Home() {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     } catch {
-      setError("Erreur de connexion. Réessayez dans un instant.");
+      setError("Une erreur est survenue. Merci de réessayer dans un instant.");
     } finally {
       setSubmitting(false);
     }
@@ -132,10 +133,10 @@ export default function Home() {
             </svg>
           </div>
           <h1 className="text-2xl sm:text-3xl font-semibold text-[#0A2540] tracking-tight mb-3">
-            Candidature envoyée
+            Candidature bien reçue
           </h1>
           <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-            Merci d&apos;avoir postulé. Si votre profil correspond, vous serez recontacté rapidement.
+            Merci pour votre intérêt. Nous étudions chaque candidature avec attention et reviendrons vers vous rapidement si votre profil correspond à nos besoins actuels.
           </p>
         </div>
       </div>
@@ -164,7 +165,7 @@ export default function Home() {
               </div>
               <div className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-blue-200/80 mt-0.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                Équipe jeune et dynamique
+                Recrutement en cours
               </div>
             </div>
           </div>
@@ -180,7 +181,9 @@ export default function Home() {
             <span>.</span>
           </h1>
           <p className="mt-3 sm:mt-5 text-sm sm:text-lg text-blue-100/70 leading-relaxed max-w-xl">
-            Agence web en pleine croissance. On travaille au projet, avec des profils rigoureux et passionnés.
+            Notre agence accompagne des PME françaises dans leur présence
+            digitale. Nous étoffons aujourd&apos;hui notre réseau de
+            collaborateurs pour répondre à une demande croissante.
           </p>
         </div>
       </header>
@@ -197,12 +200,15 @@ export default function Home() {
               À propos de VBWEB
             </div>
             <p className="text-sm sm:text-[15px] text-gray-700 leading-relaxed">
-              VBWEB est une jeune agence web dynamique, déjà spécialisée dans le
-              développement. Nous sommes aujourd&apos;hui une équipe de{" "}
-              <span className="font-semibold text-[#0A2540]">2 développeurs en interne</span>{" "}
-              et nous cherchons à nous entourer de profils complémentaires pour
-              grandir ensemble. On privilégie les collaborations long terme, dans
-              un cadre équilibré pour tout le monde.
+              VBWEB est une agence web indépendante, en croissance régulière.
+              Notre équipe interne, composée de{" "}
+              <span className="font-semibold text-[#0A2540]">deux développeurs</span>,
+              conçoit et opère l&apos;ensemble de nos projets clients.
+              Nous constituons aujourd&apos;hui un réseau de collaborateurs
+              spécialisés pour accompagner notre activité dans la durée. Nous
+              valorisons les profils autonomes et rigoureux, et privilégions
+              des collaborations stables, sur des bases tarifaires adaptées
+              aux réalités d&apos;une jeune agence.
             </p>
           </div>
 
@@ -262,7 +268,7 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-4">
               <div>
                 <span className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
-                  Vous êtes <span className="text-[#0A2540]">*</span>
+                  Statut <span className="text-[#0A2540]">*</span>
                 </span>
                 <div className="grid grid-cols-2 gap-2">
                   {["Freelance", "Agence"].map((s) => {
@@ -284,7 +290,7 @@ export default function Home() {
                   })}
                 </div>
               </div>
-              <Field label="Expérience dans le domaine" required>
+              <Field label="Niveau d'expérience" required>
                 <select
                   required
                   value={form.experience}
@@ -307,8 +313,8 @@ export default function Home() {
           {/* 2. Postes */}
           <Section
             n="2"
-            title="Pour quel poste ?"
-            hint="Plusieurs choix possibles."
+            title="Postes recherchés"
+            hint="Sélectionnez un ou plusieurs postes correspondant à votre profil."
           >
             <div className="space-y-2.5">
               {CATEGORIES.map((cat) => {
@@ -370,13 +376,12 @@ export default function Home() {
           {/* 3. Présentation */}
           <Section
             n="3"
-            title="Présentez-vous"
-            hint="Quelques lignes sur votre expérience, vos compétences, pourquoi vous."
+            title="Présentation"
+            hint="Décrivez en quelques lignes votre parcours, vos compétences clés, vos références éventuelles, et ce qui vous intéresse dans cette collaboration."
           >
             <textarea
               required
               rows={5}
-              placeholder="Je m'appelle... je fais ça depuis... ce qui me motive..."
               value={form.resume}
               onChange={(e) => setForm({ ...form, resume: e.target.value })}
               className="input resize-y min-h-[120px]"
@@ -386,14 +391,16 @@ export default function Home() {
           <Divider />
 
           {/* 4. Tarif */}
-          <Section n="4" title="Votre tarif horaire" optional>
+          <Section n="4" title="Tarification" optional>
             <div className="bg-blue-50/60 ring-1 ring-blue-100 rounded-xl p-3.5 sm:p-4 mb-4 sm:mb-5">
               <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
-                Notre tarification dépend du type de mission : certains projets
-                sont au <span className="font-semibold text-[#0A2540]">forfait fixe</span>,
-                d&apos;autres sont payés à <span className="font-semibold text-[#0A2540]">l&apos;heure</span> parce que c&apos;est plus
-                volatile (interventions, DNS, dépannage, bras droit technique).
-                Pour démarrer, indiquez simplement votre tarif horaire.
+                Nos missions s&apos;organisent selon deux modèles : au{" "}
+                <span className="font-semibold text-[#0A2540]">forfait</span>{" "}
+                pour les projets bien délimités, ou à un{" "}
+                <span className="font-semibold text-[#0A2540]">taux horaire</span>{" "}
+                pour les interventions plus ouvertes (maintenance,
+                accompagnement technique, support continu). Merci d&apos;indiquer
+                votre tarif horaire de référence.
               </p>
             </div>
             <Field label="Tarif horaire">
@@ -411,8 +418,8 @@ export default function Home() {
           {/* 5. Liens */}
           <Section
             n="5"
-            title="Vos liens"
-            hint="Portfolio, CV Google Doc, GitHub, LinkedIn... jusqu'à 5 liens. Mettez vos pièces jointes dans un Google Doc partagé."
+            title="Références et portfolio"
+            hint="Portfolio, CV au format Google Doc, GitHub, LinkedIn… jusqu'à 5 liens. Pour les pièces jointes, regroupez-les dans un Google Doc partagé."
             optional
           >
             <div className="space-y-2.5 sm:space-y-3">
@@ -488,7 +495,7 @@ export default function Home() {
               {submitting ? "Envoi en cours..." : "Envoyer ma candidature"}
             </button>
             <p className="text-center text-xs text-gray-400 mt-4">
-              Vos infos sont envoyées directement à Victor (VBWEB.fr).
+              Vos informations sont transmises directement à VBWEB et restent confidentielles.
             </p>
           </div>
         </form>
